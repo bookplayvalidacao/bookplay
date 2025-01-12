@@ -81,6 +81,24 @@
             text-align: center;
         }
 
+        /* Estilos para o aviso verde */
+        .alerta {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .alerta.show {
+            display: block;
+            opacity: 1;
+        }
+
         /* Estilos para mostrar as informações do certificado */
         .info {
             display: none;
@@ -117,9 +135,14 @@
     <div class="form-container">
         <h2>Digite o Registro do Certificado</h2>
         <form id="form-codigo">
-            <input type="text" id="codigo" name="codigo" placeholder="Código do certificado" required>
+            <input type="text" id="codigo" name="codigo" placeholder="Registro do certificado" required>
             <input type="submit" value="Validar">
         </form>
+
+        <!-- Aviso de sucesso -->
+        <div class="alerta" id="alerta">
+           CERTIFICADO VÁLIDO!
+        </div>
 
         <!-- Área para mostrar as informações do certificado -->
         <div class="info" id="info">
@@ -143,11 +166,15 @@
         // Captura o valor do código inserido
         const codigo = document.getElementById('codigo').value.trim();
 
-        // Verifica se o código é "0001"
+        // Verifica se o código é "14460"
         if (codigo === '14460') {
             // Exibe as informações com transição
             const infoDiv = document.getElementById('info');
-            infoDiv.classList.add('show'); // Adiciona a classe 'show' para ativar a animação
+            const alertaDiv = document.getElementById('alerta');
+            
+            // Adiciona a classe 'show' para ativar a animação das informações e do alerta
+            infoDiv.classList.add('show');
+            alertaDiv.classList.add('show');
 
         } else {
             alert('Código inválido. Tente novamente.');
