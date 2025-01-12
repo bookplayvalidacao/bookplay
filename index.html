@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validação de Certificado - Faculdade Book Play</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 150px; /* Defina o tamanho da logo conforme necessário */
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Estilos do formulário */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #004f9f;
+        }
+
+        .form-container input[type="text"], 
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #00ade4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #004f9f;
+        }
+
+        footer {
+            background-color: #004f9f;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Estilos para mostrar as informações do certificado */
+        .info {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .info.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info p {
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logoebook.png" alt="Logo Faculdade Book Play"> <!-- Substitua o caminho da logo -->
+    <h1>Validação de Certificado</h1>
+</header>
+
+<div class="container">
+    <div class="form-container">
+        <h2>Digite o código do certificado</h2>
+        <form id="form-codigo">
+            <input type="text" id="codigo" name="codigo" placeholder="Código do certificado" required>
+            <input type="submit" value="Validar">
+        </form>
+
+        <!-- Área para mostrar as informações do certificado -->
+        <div class="info" id="info">
+            <h3>Informações do Estudante:</h3>
+            <p><strong>Nome:</strong> MARCIO KERLLY AMORIM PEREIRA</p>
+            <p><strong>Registro:</strong> 14460</p>
+            <p><strong>Livro N°:</strong> 3</p>
+            <p><strong>Folha N°:</strong> 290</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Faculdade Book Play. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.getElementById('form-codigo').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Captura o valor do código inserido
+        const codigo = document.getElementById('codigo').value.trim();
+
+        // Verifica se o código é "0001"
+        if (codigo === '14460') {
+            // Exibe as informações com transição
+            const infoDiv = document.getElementById('info');
+            infoDiv.classList.add('show'); // Adiciona a classe 'show' para ativar a animação
+
+        } else {
+            alert('Código inválido. Tente novamente.');
+            document.getElementById('codigo').value = ''; // Limpa o campo de código
+        }
+    });
+</script>
+
+</body>
+</html>
